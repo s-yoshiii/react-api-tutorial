@@ -8,14 +8,16 @@ function App() {
   const ref = useRef<HTMLInputElement>(null);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const endpointURL = `https://pixabay.com/api/?key=27953433-575aa647eb0ffb5a156b64201&q=${ref.current?.value}&image_type=photo`;
+    if (!ref.current?.value) {
+      return;
+    }
+    const endpointURL = `https://pixabay.com/api/?key=27953433-575aa647eb0ffb5a156b64201&q=${ref.current.value}&image_type=photo&pretty=true`;
     fetch(endpointURL)
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         setFetchData(data.hits);
-        console.log(data.hits);
       });
   };
   return (
