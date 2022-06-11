@@ -1,12 +1,22 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./App.css";
 import Gallery from "./component/Gallery";
+import { Fetch } from "./types/api";
 
 function App() {
+  const [fetchData, setFetchData] = useState<Fetch[]>([]);
   const ref = useRef<HTMLInputElement>(null);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    console.log(ref.current?.value);
+    const endpointURL = `https://pixabay.com/api/?key=27953433-575aa647eb0ffb5a156b64201&q=${ref.current?.value}&image_type=photo`;
+    fetch(endpointURL)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setFetchData(data.hits);
+        console.log(data.hits);
+      });
   };
   return (
     <div className="container">
@@ -14,7 +24,7 @@ function App() {
       <form onSubmit={(e) => handleSubmit(e)}>
         <input type="text" placeholder="Search" ref={ref} />
       </form>
-      <Gallery />
+      <Gallery fetchData={fetchData} />
     </div>
   );
 }
