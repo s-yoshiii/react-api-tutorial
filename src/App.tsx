@@ -9,6 +9,7 @@ const endpointURL =
 
 function App() {
   const [fetchData, setFetchData] = useState<Fetch[]>([]);
+  const [searchWords, setSearchWords] = useState<string[]>([]);
   const ref = useRef<HTMLInputElement>(null);
   const handleSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>): void => {
@@ -17,18 +18,35 @@ function App() {
         setFetchData([]);
         return;
       }
-      axios.get(`${endpointURL}${ref.current.value}`).then((res) => {
-        setFetchData(res.data.hits);
-      });
+      setSearchWords([...searchWords, ref.current.value]);
+      axios
+        .get(`${endpointURL}${ref.current.value}+${searchWords.join("+")}`)
+        .then((res) => {
+          setFetchData(res.data.hits);
+        });
+      ref.current.value = "";
     },
-    [ref]
+    [ref, searchWords]
   );
+  const handleClear = () => {
+    setSearchWords([]);
+    setFetchData([]);
+  };
   return (
     <div className="container">
       <h1>My Pixabay</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
         <input type="text" placeholder="Search" ref={ref} />
+        <button type="submit">SET</button>
+        <button type="button" onClick={handleClear}>
+          ALL CLEAR
+        </button>
       </form>
+      <p>{searchWords.join(",")}</p>
       <Gallery fetchData={fetchData} />
     </div>
   );
