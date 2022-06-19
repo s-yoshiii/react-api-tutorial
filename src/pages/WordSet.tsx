@@ -19,7 +19,7 @@ const WordSet = () => {
         </button>
       </form>
       <p>{searchWords.join(",")}</p>
-      <Link to="result" state={{ fetchData, searchWords }}>
+      <Link to="result" state={{ fetchData }}>
         結果表示
       </Link>
     </div>
