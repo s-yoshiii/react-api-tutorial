@@ -1,16 +1,48 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import ResultSet from "./pages/ResultSet";
-import WordSet from "./pages/WordSet";
+import useGallerySet from "./hooks/useGallerySet";
+import Gallery from "./component/Gallery";
 function App() {
+  const {
+    ref,
+    handleSubmit,
+    handleClear,
+    searchWords,
+    fetchData,
+    isDisplay,
+    handleDisplay,
+  } = useGallerySet();
+
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<WordSet />} />
-        <Route path="result" element={<ResultSet />} />
-      </Routes>
-    </>
+    <div className="container">
+      {isDisplay ? (
+        <>
+          <Gallery fetchData={fetchData} />
+          <button type="button" onClick={handleDisplay}>
+            表示
+          </button>
+        </>
+      ) : (
+        <>
+          <h1>My Pixabay</h1>
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+          >
+            <input type="text" placeholder="Search" ref={ref} />
+            <button type="submit">SET</button>
+            <button type="button" onClick={handleClear}>
+              ALL CLEAR
+            </button>
+          </form>
+          <p>{searchWords.join(",")}</p>
+          <button type="button" onClick={handleDisplay}>
+            表示
+          </button>
+        </>
+      )}
+    </div>
   );
 }
 

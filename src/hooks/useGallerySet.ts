@@ -7,6 +7,7 @@ const endpointURL =
 const useGallerySet = () => {
   const [fetchData, setFetchData] = useState<Fetch[]>([]);
   const [searchWords, setSearchWords] = useState<string[]>([]);
+  const [isDisplay, setIsDisplay] = useState(false);
   const ref = useRef<HTMLInputElement>(null);
   const handleSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>): void => {
@@ -25,17 +26,22 @@ const useGallerySet = () => {
     },
     [ref, searchWords]
   );
+  const handleDisplay = () => {
+    isDisplay ? setIsDisplay(false) : setIsDisplay(true);
+  };
   const handleClear = () => {
     setSearchWords([]);
     setFetchData([]);
+    setIsDisplay(false);
   };
-  console.log(fetchData);
   return {
     ref,
     fetchData,
     searchWords,
+    isDisplay,
     handleSubmit,
     handleClear,
+    handleDisplay,
   };
 };
 
