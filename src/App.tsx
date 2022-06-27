@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import useGallerySet from "./hooks/useGallerySet";
 import Gallery from "./component/Gallery";
+import Button from "./component/Button";
 function App() {
   const {
     ref,
@@ -31,7 +32,9 @@ function App() {
             }}
           >
             <input type="text" placeholder="Search" ref={ref} />
+            <Button type="button">ボタンです</Button>
             <button type="submit">SET</button>
+
             <button type="button" onClick={handleClear}>
               ALL CLEAR
             </button>
