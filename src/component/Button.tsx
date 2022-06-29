@@ -1,8 +1,12 @@
 import React, { FC, ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 type Props = {
   children: ReactNode;
   type: "button" | "submit";
+  // variant: "outlined" | "contained" | "text";
+  outlined?: boolean;
+  contained?: boolean;
+  text?: boolean;
 };
 const Button: FC<Props> = (props) => {
   const { children, type } = props;
@@ -10,11 +14,11 @@ const Button: FC<Props> = (props) => {
 };
 
 const SButton = styled.button`
-  color: palevioletred;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
+  ${(outlined) =>
+    outlined &&
+    css`
+      padding: 14px;
+      color: #54bab9;
+    `}
 `;
 export default Button;
