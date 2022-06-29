@@ -7,6 +7,34 @@ import Button from "./component/Button";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+  html {
+    font-size: 62.5%;
+  }
+  body *{
+    font-family: 'Open Sans','Montserrat', sans-serif;
+  }
+  body{
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+    -ms-touch-action: manipulation;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  html,
+  body {
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+    -ms-touch-action: manipulation;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
   *, *::after, *::before {
     box-sizing: border-box;
     -moz-osx-font-smoothing: grayscale;
@@ -45,19 +73,18 @@ function App() {
               }}
             >
               <input type="text" placeholder="Search" ref={ref} />
-              <Button type="button" outlined>
-                ボタンです
+              <Button outlined type="submit">
+                SET
               </Button>
-              <button type="submit">SET</button>
 
               <button type="button" onClick={handleClear}>
                 ALL CLEAR
               </button>
             </form>
             <p>{searchWords.join(",")}</p>
-            <button type="button" onClick={handleDisplay}>
-              表示
-            </button>
+            <Button contained type="button" onClick={handleDisplay}>
+              SHOW
+            </Button>
           </>
         )}
       </div>
