@@ -2,8 +2,10 @@ import React from "react";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import useGallerySet from "./hooks/useGallerySet";
-import Gallery from "./component/Gallery";
 import Button from "./component/Button";
+import Gallery from "./component/Gallery";
+import Setword from "./pages/Setwords";
+import Result from "./pages/Result";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -41,6 +43,14 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
   }
+  button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+  }
 `;
 function App() {
   const {
@@ -52,7 +62,12 @@ function App() {
     isDisplay,
     handleDisplay,
   } = useGallerySet();
-
+  // return (
+  //   <>
+  //     <GlobalStyle />
+  //     <div className="container">{isDisplay ? <Result /> : <Setword />}</div>
+  //   </>
+  // );
   return (
     <>
       <GlobalStyle />
@@ -73,16 +88,16 @@ function App() {
               }}
             >
               <input type="text" placeholder="Search" ref={ref} />
-              <Button outlined type="submit">
+              <Button variant="outlined" type="submit">
                 SET
               </Button>
 
-              <button type="button" onClick={handleClear}>
+              <Button type="button" onClick={handleClear}>
                 ALL CLEAR
-              </button>
+              </Button>
             </form>
             <p>{searchWords.join(",")}</p>
-            <Button contained type="button" onClick={handleDisplay}>
+            <Button variant="contained" type="button" onClick={handleDisplay}>
               SHOW
             </Button>
           </>

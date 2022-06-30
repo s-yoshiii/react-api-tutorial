@@ -26,9 +26,9 @@ const useGallerySet = () => {
     },
     [ref, searchWords]
   );
-  const handleDisplay = () => {
+  const handleDisplay = useCallback(() => {
     isDisplay ? setIsDisplay(false) : setIsDisplay(true);
-  };
+  }, [isDisplay]);
   const handleClear = () => {
     setSearchWords([]);
     setFetchData([]);
