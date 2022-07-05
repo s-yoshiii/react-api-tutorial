@@ -4,4 +4,5 @@ export const color = {
   primary: "#FBF8F1",
   secondary: "#54BAB9",
   labelcolor: "#E9DAC1",
+  gray: "#999",
 };
