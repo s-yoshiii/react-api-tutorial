@@ -107,8 +107,8 @@ function App() {
             </form>
             {searchWords.length !== 0 && (
               <SLabelWrap>
-                {searchWords.map((word) => (
-                  <Label>{word}</Label>
+                {searchWords.map((word, index) => (
+                  <Label key={index}>{word}</Label>
                 ))}
               </SLabelWrap>
             )}
