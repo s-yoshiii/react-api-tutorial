@@ -5,6 +5,7 @@ import useGallerySet from "./hooks/useGallerySet";
 import Button from "./component/Button";
 import Gallery from "./component/Gallery";
 import { color } from "./utils/color";
+import Label from "./component/Label";
 // import Setword from "./pages/Setwords";
 // import Result from "./pages/Result";
 
@@ -104,7 +105,13 @@ function App() {
                 </SButtonWrap>
               </SInputSection>
             </form>
-            <p>{searchWords.join(",")}</p>
+            {searchWords.length !== 0 && (
+              <SLabelWrap>
+                {searchWords.map((word) => (
+                  <Label>{word}</Label>
+                ))}
+              </SLabelWrap>
+            )}
             <Button variant="contained" type="button" onClick={handleDisplay}>
               SHOW
             </Button>
@@ -174,5 +181,11 @@ const SInputSection = styled.div`
   padding-bottom: 40px;
   margin-bottom: 40px;
   border-bottom: 1px solid ${color.labelcolor};
+`;
+const SLabelWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 `;
 export default App;
