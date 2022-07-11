@@ -6,6 +6,7 @@ import Button from "./component/Button";
 import Gallery from "./component/Gallery";
 import { color } from "./utils/color";
 import Label from "./component/Label";
+import { contWidth } from "./utils/media";
 // import Setword from "./pages/Setwords";
 // import Result from "./pages/Result";
 
@@ -75,10 +76,15 @@ function App() {
       <GlobalStyle />
       {isDisplay ? (
         <>
+          <SResultHeader>
+            <SContWrap>
+              <SResultHeading>{searchWords}</SResultHeading>
+            </SContWrap>
+          </SResultHeader>
           <Gallery fetchData={fetchData} />
-          <button type="button" onClick={handleDisplay}>
-            表示
-          </button>
+          <Button type="button" variant="outlined" onClick={handleDisplay}>
+            Back to SearchPage
+          </Button>
         </>
       ) : (
         <SContainer>
@@ -106,11 +112,14 @@ function App() {
               </SInputSection>
             </form>
             {searchWords.length !== 0 && (
-              <SLabelWrap>
-                {searchWords.map((word, index) => (
-                  <Label key={index}>{word}</Label>
-                ))}
-              </SLabelWrap>
+              <>
+                <SWordTitle>Setting Words</SWordTitle>
+                <SLabelWrap>
+                  {searchWords.map((word, index) => (
+                    <Label key={index}>{word}</Label>
+                  ))}
+                </SLabelWrap>
+              </>
             )}
             <Button variant="contained" type="button" onClick={handleDisplay}>
               SHOW
@@ -182,10 +191,37 @@ const SInputSection = styled.div`
   margin-bottom: 40px;
   border-bottom: 1px solid ${color.labelcolor};
 `;
+const SWordTitle = styled.h3`
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.024em;
+  margin-bottom: 24px;
+`;
 const SLabelWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 40px;
+`;
+const SResultHeader = styled.header`
+  background: ${color.primary};
+  filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.1));
+  position: fixed;
+  width: 100%;
+`;
+const SContWrap = styled.div`
+  max-width: ${contWidth.lg + contWidth.lgSpace * 2}px;
+  margin: 0 auto;
+  padding: 0 ${contWidth.lgSpace}px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 70px;
+`;
+const SResultHeading = styled.h1`
+  color: ${color.secondary};
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 `;
 export default App;
