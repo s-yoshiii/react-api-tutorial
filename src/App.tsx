@@ -77,9 +77,12 @@ function App() {
       {isDisplay ? (
         <>
           <SResultHeader>
-            <SContWrap>
-              <SResultHeading>{searchWords}</SResultHeading>
-            </SContWrap>
+            <SResultHeaderInner>
+              <SResultHeading>{searchWords.join(" / ")}</SResultHeading>
+              <Button type="button" variant="outlined" onClick={handleDisplay}>
+                Back to SearchPage
+              </Button>
+            </SResultHeaderInner>
           </SResultHeader>
           <Gallery fetchData={fetchData} />
           <Button type="button" variant="outlined" onClick={handleDisplay}>
@@ -209,7 +212,7 @@ const SResultHeader = styled.header`
   position: fixed;
   width: 100%;
 `;
-const SContWrap = styled.div`
+const SResultHeaderInner = styled.div`
   max-width: ${contWidth.lg + contWidth.lgSpace * 2}px;
   margin: 0 auto;
   padding: 0 ${contWidth.lgSpace}px;
@@ -217,6 +220,7 @@ const SContWrap = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 70px;
+  justify-content: space-between;
 `;
 const SResultHeading = styled.h1`
   color: ${color.secondary};

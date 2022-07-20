@@ -6,12 +6,13 @@ type Props = {
   children: ReactNode;
   type: "button" | "submit";
   variant?: "outlined" | "contained";
+  size?: "small" | "large";
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 const Button: FC<Props> = (props) => {
-  const { children, type, variant, onClick } = props;
+  const { children, type, variant, size, onClick } = props;
   return (
-    <SButton type={type} className={variant} onClick={onClick}>
+    <SButton type={type} className={`${variant} ${size}`} onClick={onClick}>
       {children}
     </SButton>
   );
