@@ -211,6 +211,8 @@ const SResultHeader = styled.header`
   filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.1));
   position: fixed;
   width: 100%;
+  top: 0;
+  left: 0;
 `;
 const SResultHeaderInner = styled.div`
   max-width: ${contWidth.lg + contWidth.lgSpace * 2}px;
