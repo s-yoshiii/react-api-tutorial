@@ -16,8 +16,12 @@ const Gallery: FC<Props> = (props) => {
           </SGalleryPhoto>
           <SGalleryInner>
             <SGalleryTextBox>
-              <SGalleryNumber>{i + 1}</SGalleryNumber>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+              <SGalleryNumber>
+                {String(`${i + 1}`).padStart(2, "0")}
+              </SGalleryNumber>
+              <SGalleryText>
+                TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
+              </SGalleryText>
             </SGalleryTextBox>
           </SGalleryInner>
         </SGallerySect>
@@ -59,6 +63,20 @@ const SGalleryTextBox = styled.div`
   background: #fff;
   z-index: 2;
   width: 614px;
+  word-break: break-all;
+  padding: 40px;
 `;
-const SGalleryNumber = styled.div``;
+const SGalleryNumber = styled.div`
+  color: rgba(84, 186, 185, 0.7);
+  font-size: 92px;
+  font-weight: 300;
+  font-style: italic;
+  text-shadow: 0px 5px 10px #fff;
+  margin-top: calc(-40px - 0.5em);
+`;
+const SGalleryText = styled.p`
+  font-size: 16px;
+  margin-top: 10px;
+  line-height: 1.5;
+`;
 export default Gallery;
