@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Fetch } from "../types/api";
 import styled from "styled-components";
+import Label from "./Label";
 type Props = {
   fetchData: Fetch[];
 };
@@ -22,6 +23,11 @@ const Gallery: FC<Props> = (props) => {
               <SGalleryText>
                 TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
               </SGalleryText>
+              <SGalleryLabelArea>
+                {data.tags.split(",").map((label) => (
+                  <Label>{label}</Label>
+                ))}
+              </SGalleryLabelArea>
             </SGalleryTextBox>
           </SGalleryInner>
         </SGallerySect>
@@ -78,5 +84,8 @@ const SGalleryText = styled.p`
   font-size: 16px;
   margin-top: 10px;
   line-height: 1.5;
+`;
+const SGalleryLabelArea = styled.div`
+  margin-top: 20px;
 `;
 export default Gallery;
