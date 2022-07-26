@@ -28,6 +28,11 @@ const Gallery: FC<Props> = (props) => {
                   <Label>{label}</Label>
                 ))}
               </SGalleryLabelArea>
+              <SGalleryLinkWrap>
+                <SGalleryLink href="" target="_blank">
+                  View More
+                </SGalleryLink>
+              </SGalleryLinkWrap>
             </SGalleryTextBox>
           </SGalleryInner>
         </SGallerySect>
@@ -87,5 +92,14 @@ const SGalleryText = styled.p`
 `;
 const SGalleryLabelArea = styled.div`
   margin-top: 20px;
+`;
+const SGalleryLinkWrap = styled.div`
+  margin-top: 20px;
+  text-align: right;
+`;
+const SGalleryLink = styled.a`
+  font-size: 16px;
+  margin-top: 10px;
+  line-height: 1.5;
 `;
 export default Gallery;
