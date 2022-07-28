@@ -98,8 +98,34 @@ const SGalleryLinkWrap = styled.div`
   text-align: right;
 `;
 const SGalleryLink = styled.a`
-  font-size: 16px;
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
   margin-top: 10px;
   line-height: 1.5;
+  text-decoration: none;
+  font-weight: 700;
+  color: #000;
+  padding-right: 30px;
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 20px;
+    height: 14px;
+    background: #fff;
+    border: 2px solid #000;
+  }
+  &::before {
+    top: calc(50% + 5px);
+    right: 5px;
+    transform: translateY(-50%);
+  }
+  &::after {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
 `;
 export default Gallery;
