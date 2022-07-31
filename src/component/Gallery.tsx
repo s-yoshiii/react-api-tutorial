@@ -7,29 +7,33 @@ type Props = {
 };
 const Gallery: FC<Props> = (props) => {
   const { fetchData } = props;
+  const isEven = (i: number) => {
+    const even = (i + 1) % 2 === 0;
+    if (even) {
+      return "reverse";
+    }
+  };
   console.log(fetchData);
   return (
     <SGalleryContainer>
       {fetchData.map((data, i) => (
-        <SGallerySect key={data.id}>
+        <SGallerySect key={data.id} className={isEven(i)}>
           <SGalleryPhoto>
             <img src={data.largeImageURL} alt="" />
           </SGalleryPhoto>
           <SGalleryInner>
-            <SGalleryTextBox>
+            <SGalleryTextBox className={isEven(i)}>
               <SGalleryNumber>
                 {String(`${i + 1}`).padStart(2, "0")}
               </SGalleryNumber>
-              <SGalleryText>
-                TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
-              </SGalleryText>
+              <SGalleryText>photo by：{data.user}</SGalleryText>
               <SGalleryLabelArea>
                 {data.tags.split(",").map((label) => (
                   <Label>{label}</Label>
                 ))}
               </SGalleryLabelArea>
               <SGalleryLinkWrap>
-                <SGalleryLink href="" target="_blank">
+                <SGalleryLink href={data.pageURL} target="_blank">
                   View More
                 </SGalleryLink>
               </SGalleryLinkWrap>
@@ -45,7 +49,11 @@ const SGalleryContainer = styled.div`
 `;
 const SGallerySect = styled.section`
   position: relative;
-  margin-bottom: 100px;
+  margin-bottom: 250px;
+  &.reverse {
+    display: flex;
+    justify-content: flex-end;
+  }
 `;
 const SGalleryPhoto = styled.div`
   height: 448px;
@@ -76,6 +84,10 @@ const SGalleryTextBox = styled.div`
   width: 614px;
   word-break: break-all;
   padding: 40px;
+  &.reverse {
+    right: auto;
+    left: 0;
+  }
 `;
 const SGalleryNumber = styled.div`
   color: rgba(84, 186, 185, 0.7);
@@ -84,6 +96,9 @@ const SGalleryNumber = styled.div`
   font-style: italic;
   text-shadow: 0px 5px 10px #fff;
   margin-top: calc(-40px - 0.5em);
+  .reverse & {
+    text-align: right;
+  }
 `;
 const SGalleryText = styled.p`
   font-size: 16px;
