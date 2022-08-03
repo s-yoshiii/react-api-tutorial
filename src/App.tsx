@@ -79,15 +79,27 @@ function App() {
           <SResultHeader>
             <SResultHeaderInner>
               <SResultHeading>{searchWords.join(" / ")}</SResultHeading>
-              <Button type="button" variant="outlined" onClick={handleDisplay}>
+              <Button
+                type="button"
+                variant="outlined"
+                size="small"
+                onClick={handleDisplay}
+              >
                 Back to SearchPage
               </Button>
             </SResultHeaderInner>
           </SResultHeader>
           <Gallery fetchData={fetchData} />
-          <Button type="button" variant="outlined" onClick={handleDisplay}>
-            Back to SearchPage
-          </Button>
+          <SResultFooter>
+            <Button
+              type="button"
+              variant="outlined"
+              size="large"
+              onClick={handleDisplay}
+            >
+              Back to SearchPage
+            </Button>
+          </SResultFooter>
         </>
       ) : (
         <SContainer>
@@ -230,5 +242,11 @@ const SResultHeading = styled.h1`
   font-size: 42px;
   font-weight: 400;
   letter-spacing: 0.01em;
+`;
+const SResultFooter = styled.footer`
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 200px;
+  background: ${color.lightgray};
 `;
 export default App;

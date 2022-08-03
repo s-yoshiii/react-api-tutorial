@@ -83,7 +83,7 @@ const SGalleryTextBox = styled.div`
   z-index: 2;
   width: 614px;
   word-break: break-all;
-  padding: 40px;
+  padding: 40px 80px;
   &.reverse {
     right: auto;
     left: 0;

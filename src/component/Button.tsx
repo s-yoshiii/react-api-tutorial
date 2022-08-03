@@ -22,7 +22,7 @@ const SButton = styled.button`
   letter-spacing: 0.024em;
   transition: .3s ease;
   cursor: pointer;
-  font-size: 18px;
+  c
   font-weight:400;
   color: ${color.secondary};
   &.outlined {
@@ -48,6 +48,15 @@ const SButton = styled.button`
         background: ${color.white};
         color: ${color.secondary};
       }
+    }
+    &.small{
+      font-size:16px;
+      padding:10px;
+      min-width:inherit;
+    }
+    &.large{
+      font-size:24px;
+      padding:20px;
     }
   }
 `;
