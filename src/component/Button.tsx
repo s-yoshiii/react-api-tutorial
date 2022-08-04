@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
 import { color } from "../utils/color";
-import { media } from "../utils/media";
+// import { media } from "../utils/media";
 type Props = {
   children: ReactNode;
   type: "button" | "submit";

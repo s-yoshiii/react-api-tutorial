@@ -1,25 +1,47 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { Fetch } from "../types/api";
 import styled from "styled-components";
 import Label from "./Label";
 type Props = {
   fetchData: Fetch[];
+  windowHeight: number;
 };
 const Gallery: FC<Props> = (props) => {
-  const { fetchData } = props;
+  const { fetchData, windowHeight } = props;
   const isEven = (i: number) => {
     const even = (i + 1) % 2 === 0;
     if (even) {
       return "reverse";
     }
   };
-  console.log(fetchData);
+  const getPageYOffset = (): number => window.pageYOffset;
+  const ref = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const onScroll = () => {
+      if (ref.current !== null) {
+        const pageY = getPageYOffset();
+        const offsetTop = ref.current.offsetTop;
+        const scrollY = offsetTop - windowHeight;
+        const bgYStart =
+          pageY > scrollY ? `${(pageY - offsetTop) * 0.25}px` : "top";
+
+        ref.current.style.transform = `translateY(${bgYStart})`;
+        console.log(`translateY(${bgYStart})`);
+      }
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  });
+  const style = {};
+  console.log(ref);
   return (
     <SGalleryContainer>
       {fetchData.map((data, i) => (
         <SGallerySect key={data.id} className={isEven(i)}>
           <SGalleryPhoto>
-            <img src={data.largeImageURL} alt="" />
+            <img src={data.largeImageURL} alt="" style={style} ref={ref} />
           </SGalleryPhoto>
           <SGalleryInner>
             <SGalleryTextBox className={isEven(i)}>
@@ -28,8 +50,8 @@ const Gallery: FC<Props> = (props) => {
               </SGalleryNumber>
               <SGalleryText>photo by：{data.user}</SGalleryText>
               <SGalleryLabelArea>
-                {data.tags.split(",").map((label) => (
-                  <Label>{label}</Label>
+                {data.tags.split(",").map((label, i) => (
+                  <Label key={i}>{label}</Label>
                 ))}
               </SGalleryLabelArea>
               <SGalleryLinkWrap>
