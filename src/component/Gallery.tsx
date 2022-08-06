@@ -1,47 +1,25 @@
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC } from "react";
 import { Fetch } from "../types/api";
 import styled from "styled-components";
 import Label from "./Label";
 type Props = {
   fetchData: Fetch[];
-  windowHeight: number;
 };
+
 const Gallery: FC<Props> = (props) => {
-  const { fetchData, windowHeight } = props;
+  const { fetchData } = props;
   const isEven = (i: number) => {
     const even = (i + 1) % 2 === 0;
     if (even) {
       return "reverse";
     }
   };
-  const getPageYOffset = (): number => window.pageYOffset;
-  const ref = useRef<HTMLImageElement>(null);
-  useEffect(() => {
-    const onScroll = () => {
-      if (ref.current !== null) {
-        const pageY = getPageYOffset();
-        const offsetTop = ref.current.offsetTop;
-        const scrollY = offsetTop - windowHeight;
-        const bgYStart =
-          pageY > scrollY ? `${(pageY - offsetTop) * 0.25}px` : "top";
-
-        ref.current.style.transform = `translateY(${bgYStart})`;
-        console.log(`translateY(${bgYStart})`);
-      }
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  });
-  const style = {};
-  console.log(ref);
   return (
     <SGalleryContainer>
       {fetchData.map((data, i) => (
         <SGallerySect key={data.id} className={isEven(i)}>
           <SGalleryPhoto>
-            <img src={data.largeImageURL} alt="" style={style} ref={ref} />
+            <img src={data.largeImageURL} alt="" />
           </SGalleryPhoto>
           <SGalleryInner>
             <SGalleryTextBox className={isEven(i)}>
@@ -66,6 +44,7 @@ const Gallery: FC<Props> = (props) => {
     </SGalleryContainer>
   );
 };
+
 const SGalleryContainer = styled.div`
   margin-top: 130px;
 `;
@@ -77,6 +56,7 @@ const SGallerySect = styled.section`
     justify-content: flex-end;
   }
 `;
+
 const SGalleryPhoto = styled.div`
   height: 448px;
   width: 62.5%;

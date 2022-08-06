@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import useGallerySet from "./hooks/useGallerySet";
@@ -7,6 +7,7 @@ import Gallery from "./component/Gallery";
 import { color } from "./utils/color";
 import Label from "./component/Label";
 import { contWidth } from "./utils/media";
+
 // import Setword from "./pages/Setwords";
 // import Result from "./pages/Result";
 
@@ -65,18 +66,6 @@ function App() {
     isDisplay,
     handleDisplay,
   } = useGallerySet();
-  const getWindowHeight = (): number => window.innerHeight;
-  const [windowHeight, setWindowHeight] = useState<number>(getWindowHeight());
-  useEffect(() => {
-    const onLoad = () => {
-      setWindowHeight(getWindowHeight());
-    };
-    window.addEventListener("load", onLoad);
-    return () => {
-      window.removeEventListener("load", onLoad);
-    };
-  });
-
   // return (
   //   <>
   //     <GlobalStyle />
@@ -101,7 +90,7 @@ function App() {
               </Button>
             </SResultHeaderInner>
           </SResultHeader>
-          <Gallery fetchData={fetchData} windowHeight={windowHeight} />
+          <Gallery fetchData={fetchData} />
           <SResultFooter>
             <Button
               type="button"
