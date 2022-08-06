@@ -6,7 +6,7 @@ import Button from "./component/Button";
 import Gallery from "./component/Gallery";
 import { color } from "./utils/color";
 import Label from "./component/Label";
-import { contWidth } from "./utils/media";
+import { contWidth, media } from "./utils/media";
 
 // import Setword from "./pages/Setwords";
 // import Result from "./pages/Result";
@@ -161,6 +161,9 @@ const SContainer = styled.div`
   background: transparent;
   padding-top: 140px;
   text-align: center;
+  ${media("sm")} {
+    padding: 0 20px;
+  }
   &::after {
     content: "";
     display: block;
@@ -180,6 +183,10 @@ const SInner = styled.div`
   width: 960px;
   margin: 0px auto;
   padding: 60px;
+  ${media("sm")} {
+    width: auto;
+    ma
+  }
 `;
 const SInputWrap = styled.div`
   margin-bottom: 40px;

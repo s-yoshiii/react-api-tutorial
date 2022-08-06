@@ -22,7 +22,6 @@ const SButton = styled.button`
   letter-spacing: 0.024em;
   transition: .3s ease;
   cursor: pointer;
-  c
   font-weight:400;
   color: ${color.secondary};
   &.outlined {
