@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
 import { color } from "../utils/color";
+import { media } from "../utils/media";
 // import { media } from "../utils/media";
 type Props = {
   children: ReactNode;
@@ -35,6 +36,10 @@ const SButton = styled.button`
       background: ${color.secondary};
       color: ${color.white};
     }
+    ${media("sm")}{
+      font-size:18px;
+      padding:10px;
+    }
   }
   &.contained{
       font-weight: 700;
@@ -52,10 +57,16 @@ const SButton = styled.button`
       font-size:16px;
       padding:10px;
       min-width:inherit;
+      ${media("sm")}{
+        font-size:12px;
+      }
     }
     &.large{
       font-size:24px;
       padding:20px;
+      ${media("sm")} {
+        font-size:18px;
+      }
     }
   }
 `;

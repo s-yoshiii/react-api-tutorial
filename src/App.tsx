@@ -153,6 +153,10 @@ const Sheading = styled.h1`
   font-size: 64px;
   letter-spacing: 0.1em;
   margin-bottom: 80px;
+  ${media("sm")} {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
 `;
 const SContainer = styled.div`
   width: 100%;
@@ -162,7 +166,7 @@ const SContainer = styled.div`
   padding-top: 140px;
   text-align: center;
   ${media("sm")} {
-    padding: 0 20px;
+    padding: 20px;
   }
   &::after {
     content: "";
@@ -185,11 +189,14 @@ const SInner = styled.div`
   padding: 60px;
   ${media("sm")} {
     width: auto;
-    ma
+    padding: 30px;
   }
 `;
 const SInputWrap = styled.div`
   margin-bottom: 40px;
+  ${media("sm")} {
+    margin-bottom: 20px;
+  }
 `;
 const SInput = styled.input`
   width: 620px;
@@ -202,29 +209,47 @@ const SInput = styled.input`
   &:active {
     border-color: ${color.secondary};
   }
+  ${media("sm")} {
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+  }
 `;
 const SButtonWrap = styled.div`
   margin-bottom: 20px;
   &:last-child {
     margin-bottom: 0;
   }
+  ${media("sm")} {
+    margin-bottom: 10px;
+  }
 `;
 const SInputSection = styled.div`
   padding-bottom: 40px;
   margin-bottom: 40px;
   border-bottom: 1px solid ${color.labelcolor};
+  ${media("sm")} {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
 `;
 const SWordTitle = styled.h3`
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.024em;
   margin-bottom: 24px;
+  ${media("sm")} {
+    font-size: 14px;
+  }
 `;
 const SLabelWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 40px;
+  ${media("sm")} {
+    margin-bottom: 20px;
+  }
 `;
 const SResultHeader = styled.header`
   background: ${color.primary};
@@ -244,17 +269,28 @@ const SResultHeaderInner = styled.div`
   align-items: center;
   height: 70px;
   justify-content: space-between;
+  ${media("sm")} {
+    max-height: 100%;
+    padding: 0 ${contWidth.smSpace}px;
+  }
 `;
 const SResultHeading = styled.h1`
   color: ${color.secondary};
   font-size: 42px;
   font-weight: 400;
   letter-spacing: 0.01em;
+  ${media("sm")} {
+    font-size: 32px;
+  }
 `;
 const SResultFooter = styled.footer`
   text-align: center;
   padding-top: 100px;
   padding-bottom: 200px;
   background: ${color.lightgray};
+  ${media("sm")} {
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
 `;
 export default App;
