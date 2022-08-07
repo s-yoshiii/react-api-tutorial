@@ -65,7 +65,8 @@ const SButton = styled.button`
       font-size:24px;
       padding:20px;
       ${media("sm")} {
-        font-size:18px;
+        font-size:16px;
+        padding:10px;
       }
     }
   }

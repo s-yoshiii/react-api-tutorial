@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { Fetch } from "../types/api";
 import styled from "styled-components";
 import Label from "./Label";
+import { contWidth, media } from "../utils/media";
 type Props = {
   fetchData: Fetch[];
 };
@@ -55,6 +56,13 @@ const SGallerySect = styled.section`
     display: flex;
     justify-content: flex-end;
   }
+  ${media("sm")} {
+    padding: 0 ${contWidth.smSpace}px;
+    margin-bottom: 70px;
+    &.reverse {
+      display: block;
+    }
+  }
 `;
 
 const SGalleryPhoto = styled.div`
@@ -67,6 +75,13 @@ const SGalleryPhoto = styled.div`
     object-fit: cover;
     object-position: center;
   }
+  ${media("sm")} {
+    height: 224px;
+    width: 100%;
+    img {
+      height: 224px;
+    }
+  }
 `;
 const SGalleryInner = styled.div`
   width: 1300px;
@@ -76,6 +91,14 @@ const SGalleryInner = styled.div`
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  ${media("sm")} {
+    width: 100%;
+    padding: 0 ${contWidth.smSpace}px;
+    position: relative;
+    transform: none;
+    left: auto;
+    top: auto;
+  }
 `;
 const SGalleryTextBox = styled.div`
   position: absolute;
@@ -90,6 +113,13 @@ const SGalleryTextBox = styled.div`
     right: auto;
     left: 0;
   }
+  ${media("sm")} {
+    position: static;
+    width: 100%;
+    padding: ${contWidth.smSpace}px;
+    margin-top: -${contWidth.smSpace}px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
 `;
 const SGalleryNumber = styled.div`
   color: rgba(84, 186, 185, 0.7);
@@ -101,11 +131,18 @@ const SGalleryNumber = styled.div`
   .reverse & {
     text-align: right;
   }
+  ${media("sm")} {
+    font-size: 72px;
+    margin-top: calc(-20px - 0.5em);
+  }
 `;
 const SGalleryText = styled.p`
   font-size: 16px;
   margin-top: 10px;
   line-height: 1.5;
+  ${media("sm")} {
+    font-size: 14px;
+  }
 `;
 const SGalleryLabelArea = styled.div`
   margin-top: 20px;
@@ -143,6 +180,18 @@ const SGalleryLink = styled.a`
     top: 50%;
     right: 0;
     transform: translateY(-50%);
+  }
+  ${media("sm")} {
+    font-size: 16px;
+    &::before,
+    &::after {
+      width: 18px;
+      height: 12px;
+    }
+    &::before {
+      top: calc(50% + 3px);
+      right: 3px;
+    }
   }
 `;
 export default Gallery;
