@@ -108,7 +108,7 @@ function App() {
                 </SInputWrap>
                 <SButtonWrap>
                   <Button variant="outlined" type="submit">
-                    SET
+                    WORD SET
                   </Button>
                 </SButtonWrap>
                 <SButtonWrap>
@@ -145,7 +145,7 @@ const Sheading = styled.h1`
   letter-spacing: 0.1em;
   margin-bottom: 80px;
   ${media("sm")} {
-    font-size: 32px;
+    font-size: 22px;
     margin-bottom: 40px;
   }
 `;
@@ -276,12 +276,8 @@ const SResultHeading = styled.h1`
 `;
 const SResultFooter = styled.footer`
   text-align: center;
-  padding-top: 100px;
-  padding-bottom: 200px;
+  padding-top: 40px;
+  height: 140px;
   background: ${color.lightgray};
-  ${media("sm")} {
-    padding-top: 50px;
-    padding-bottom: 100px;
-  }
 `;
 export default App;

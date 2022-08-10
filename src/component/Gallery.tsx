@@ -18,39 +18,50 @@ const Gallery: FC<Props> = (props) => {
   };
   return (
     <SGalleryContainer>
-      {fetchData.length === 0 && "データがありません。検索し直して下さい。"}
-      {fetchData.map((data, i) => (
-        <SGallerySect key={data.id} className={isEven(i)}>
-          <SGalleryPhoto>
-            <img src={data.largeImageURL} alt="" />
-          </SGalleryPhoto>
-          <SGalleryInner>
-            <SGalleryTextBox className={isEven(i)}>
-              <SGalleryNumber>
-                {String(`${i + 1}`).padStart(2, "0")}
-              </SGalleryNumber>
-              <SGalleryText>photo by：{data.user}</SGalleryText>
-              <SGalleryLabelArea>
-                {data.tags.split(",").map((label, i) => (
-                  <Label key={i}>{label}</Label>
-                ))}
-              </SGalleryLabelArea>
-              <SGalleryLinkWrap>
-                <SGalleryLink href={data.pageURL} target="_blank">
-                  View More
-                </SGalleryLink>
-              </SGalleryLinkWrap>
-            </SGalleryTextBox>
-          </SGalleryInner>
-        </SGallerySect>
-      ))}
+      {fetchData.length === 0 ? (
+        <SErrorMsg>No Data...Retry</SErrorMsg>
+      ) : (
+        fetchData.map((data, i) => (
+          <SGallerySect key={data.id} className={isEven(i)}>
+            <SGalleryPhoto>
+              <img src={data.largeImageURL} alt="" />
+            </SGalleryPhoto>
+            <SGalleryInner>
+              <SGalleryTextBox className={isEven(i)}>
+                <SGalleryNumber>
+                  {String(`${i + 1}`).padStart(2, "0")}
+                </SGalleryNumber>
+                <SGalleryText>photo by：{data.user}</SGalleryText>
+                <SGalleryLabelArea>
+                  {data.tags.split(",").map((label, i) => (
+                    <Label key={i}>{label}</Label>
+                  ))}
+                </SGalleryLabelArea>
+                <SGalleryLinkWrap>
+                  <SGalleryLink href={data.pageURL} target="_blank">
+                    View More
+                  </SGalleryLink>
+                </SGalleryLinkWrap>
+              </SGalleryTextBox>
+            </SGalleryInner>
+          </SGallerySect>
+        ))
+      )}
     </SGalleryContainer>
   );
 };
 
+const SErrorMsg = styled.p`
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  ${media("sm")} {
+    font-size: 24px;
+  }
+`;
 const SGalleryContainer = styled.div`
   padding-top: 130px;
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 140px);
 `;
 const SGallerySect = styled.section`
   position: relative;
