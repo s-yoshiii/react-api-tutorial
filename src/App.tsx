@@ -8,9 +8,6 @@ import { color } from "./utils/color";
 import Label from "./component/Label";
 import { contWidth, media } from "./utils/media";
 
-// import Setword from "./pages/Setwords";
-// import Result from "./pages/Result";
-
 const GlobalStyle = createGlobalStyle`
   ${reset}
   @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;500;600;700&display=swap');
@@ -58,20 +55,14 @@ const GlobalStyle = createGlobalStyle`
 `;
 function App() {
   const {
-    ref,
-    handleSubmit,
-    handleClear,
-    searchWords,
-    fetchData,
     isDisplay,
+    searchWords,
     handleDisplay,
+    fetchData,
+    handleSubmit,
+    ref,
+    handleClear,
   } = useGallerySet();
-  // return (
-  //   <>
-  //     <GlobalStyle />
-  //     <div className="container">{isDisplay ? <Result /> : <Setword />}</div>
-  //   </>
-  // );
   return (
     <>
       <GlobalStyle />

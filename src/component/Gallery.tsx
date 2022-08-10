@@ -1,8 +1,9 @@
 import React, { FC } from "react";
-import { Fetch } from "../types/api";
+// import { Fetch } from "../types/api";
 import styled from "styled-components";
 import Label from "./Label";
 import { contWidth, media } from "../utils/media";
+import { Fetch } from "../types/api";
 type Props = {
   fetchData: Fetch[];
 };
@@ -17,6 +18,7 @@ const Gallery: FC<Props> = (props) => {
   };
   return (
     <SGalleryContainer>
+      {fetchData.length === 0 && "データがありません。検索し直して下さい。"}
       {fetchData.map((data, i) => (
         <SGallerySect key={data.id} className={isEven(i)}>
           <SGalleryPhoto>
@@ -47,7 +49,8 @@ const Gallery: FC<Props> = (props) => {
 };
 
 const SGalleryContainer = styled.div`
-  margin-top: 130px;
+  padding-top: 130px;
+  min-height: calc(100vh - 70px);
 `;
 const SGallerySect = styled.section`
   position: relative;
